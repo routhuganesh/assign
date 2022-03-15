@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+public class product
+{
+    public string Name{get;set;}
+    public double Price{get;set;}
+    public int Quantity{get;set;}
+    public string Type{get;set;}
+}
+class test
+{
+    public static void Main(string[]args)
+    {
+        List<product> products = new List<product>();
+        product p1 = new product{Name="lettuce",Price=10.5,Quantity=50,Type="Leafy green"};
+        product p2 = new product{Name="cabbage",Price=20,Quantity=100,Type="Cruciferous"};
+        product p3 = new product{Name="pumpkin",Price=30,Quantity=30,Type="Marrow"};
+        product p4 = new product{Name="cauliflower",Price=10,Quantity=25,Type="Cruciferous"};
+        product p5 = new product{Name="zucchini",Price=20.5,Quantity=50,Type="Marrow"};
+        product p6 = new product{Name="yam",Price=30,Quantity=50,Type="Root"};
+        product p7 = new product{Name="spinach",Price=10,Quantity=100,Type="Leafy green"};
+        product p8 = new product{Name="broccoli",Price=20.2,Quantity=75,Type="Cruciferous"};
+        product p9 = new product{Name="garlic",Price=30,Quantity=20,Type="Leafy green"};
+        product p10 = new product{Name="silverbeet",Price=10,Quantity=50,Type="Marrow"};
+        
+        products.Add(p1);products.Add(p2);products.Add(p3);products.Add(p4);products.Add(p5);    
+        products.Add(p6);products.Add(p7);products.Add(p8);products.Add(p9);products.Add(p10);
+        Console.WriteLine("Total number of products in list: "+products.Count);
+        product pnew=new product{Name="potato",Price=10,Quantity=50,Type="Root"};
+        products.Add(pnew);
+         Console.WriteLine("List of all products after adding new product: ");
+        foreach(product obj in products)
+        {
+            Console.WriteLine(obj.Name + " "+ obj.Price +" "+obj.Quantity + " "+obj.Type);
+        }
+        Console.WriteLine("Total no of products after adding new product: " +products.Count);
+        Console.WriteLine("List of all products which have Leafy green: ");
+        foreach (product obj in products)
+        {
+            if (obj.Type=="Leafy green")
+            {
+                Console.WriteLine(obj.Name + " "+ obj.Price +" "+obj.Quantity + " "+obj.Type);
+            }
+        }
+        products.Remove(p9);
+    
+        Console.WriteLine("Total no of products that are left after removing: "+products.Count);
+        foreach (product obj in products)
+        {
+            if (obj.Name=="cabbage")
+            {
+                int k=50;
+                k=k+obj.Quantity;
+                Console.WriteLine("final Quantity of cabbage in inventory: "+k);
+            }
+        }
+        double c=0;
+        foreach (product obj in products)
+        {
+            if (obj.Name=="lettuce")
+            {
+                c=c+obj.Price;
+            }
+            else if (obj.Name=="zucchini")
+            {
+                c=c+(2*(obj.Price));
+            }
+            else if (obj.Name=="broccoli")
+            {
+                c=c+obj.Price;
+            }
+        }
+        Console.Write("the user needs to pay: ");
+        Console.WriteLine(Convert.ToInt32(c));
+      }
+    }
